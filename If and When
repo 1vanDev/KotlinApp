@@ -1,0 +1,30 @@
+class MainActivity : AppCompatActivity() {
+    lateinit var bindingClass: ActivityMainBinding
+    val maxPerson = 90
+    val currentPerson = 89
+    val text = "опасность"
+    val text2 = " НЕ опасность"
+
+    override fun onCreate(s: Bundle?) {
+        super.onCreate(s)
+        bindingClass = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bindingClass.root)
+
+        bindingClass.B1.setOnClickListener  {
+
+            when(text){
+
+                text -> bindingClass.tvResult.text = "Предел превышен"
+                text2 -> bindingClass.tvResult.text = "Все в порядке"
+                else -> bindingClass.tvResult.text = "Не понятно"
+            }
+
+        bindingClass.B2.setOnClickListener {
+        }
+
+        bindingClass.B3.setOnClickListener {
+        }
+
+    }
+}
+}
