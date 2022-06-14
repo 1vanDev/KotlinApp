@@ -1,0 +1,70 @@
+class MainActivity : AppCompatActivity() {
+    lateinit var bindingClass: ActivityMainBinding
+
+    override fun onCreate(s: Bundle?) {
+        super.onCreate(s)
+        bindingClass = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bindingClass.root)
+
+        bindingClass.btResult.setOnClickListener {
+
+            val resultValue = bindingClass.edValue.text.toString()
+            Log.d("Mylog", "Result = $resultValue")
+            when (resultValue) {
+
+                Constance.DVORNIK -> {
+                    bindingClass.tvResult.visibility = View.VISIBLE
+                    val tempText = "Получите Ваши ${Constance.DVORNIK_SALARY}"
+                    if(bindingClass.edPassword.text.toString() == Constance.DVORNIK_PASSWORD) {
+                        tempText
+                    } else {
+                        "Неверный пароль"
+                    }
+                }
+
+                Constance.INGINER-> {
+                    bindingClass.tvResult.visibility = View.VISIBLE
+                    val tempText = "Получите Ваши ${Constance.INGINER_SALARY}"
+                    if (bindingClass.edPassword.text.toString() == Constance.INGINER_PASSWORD)
+                    bindingClass.tvResult.text = tempText
+                    if(bindingClass.edPassword.text.toString() == Constance.INGINER_PASSWORD) {
+                        tempText
+                    } else {
+                        "Неверный пароль"
+                    }
+                }
+
+                Constance.DEVELOPER -> {
+                    bindingClass.tvResult.visibility = View.VISIBLE
+                    val tempText = "Получите Ваши ${Constance.DEVELOPER_SALARY}"
+                    if (bindingClass.edPassword.text.toString() == Constance.DEVELOPER_PASSWORD)
+                    bindingClass.tvResult.text = tempText
+                    if(bindingClass.edPassword.text.toString() == Constance.DEVELOPER_PASSWORD) {
+                        tempText
+                    } else {
+                        "Неверный пароль"
+                    }
+                }
+
+                else -> {
+                    bindingClass.tvResult.visibility = View.VISIBLE
+                    bindingClass.tvResult.text = "Нет такого сотрудника"
+                }
+            }
+
+        }
+    }
+
+    object Constance {
+        const val DVORNIK_SALARY = 20000
+        const val INGINER_SALARY = 35000
+        const val DEVELOPER_SALARY = 150000
+
+        const val DVORNIK = "Andrey"
+        const val INGINER = "Sergey"
+        const val DEVELOPER = "Ivan"
+
+        const val DVORNIK_PASSWORD = "4565"
+        const val INGINER_PASSWORD = "1232"
+        const val DEVELOPER_PASSWORD = "6677"
+    }
